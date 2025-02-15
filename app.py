@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 import os
 from werkzeug.utils import secure_filename
 
@@ -36,6 +36,10 @@ def upload():
     images = os.listdir(app.config['UPLOAD_FOLDER'])
     images = [os.path.join('images', image) for image in images]
     return render_template("testhi.html", images = images)
-
+    
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static',
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 if __name__ == "__main__":
     app.run(debug=True)
