@@ -35,7 +35,7 @@ def upload():
         flash("Invalid file type!", "danger")
     images = os.listdir(app.config['UPLOAD_FOLDER'])
     images = [os.path.join('images', image) for image in images]
-    return render_template("testhi.html", images = images)
+    return render_template("index.html", images = images)
     
 @app.route('/favicon.ico')
 def favicon():
